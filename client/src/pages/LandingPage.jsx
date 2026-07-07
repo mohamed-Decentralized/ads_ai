@@ -99,7 +99,7 @@ export default function LandingPage() {
   async function handleGenerate() {
     if (!type) return
 
-    if (generationCount >= 6 && !userFalKey) {
+    if (generationCount >= 3 && !userFalKey) {
       setShowApiKeyPrompt(true)
       return
     }
@@ -340,7 +340,7 @@ export default function LandingPage() {
 
             {type && showApiKeyPrompt && (
               <div className="form-group" style={{marginTop: 30, padding: '16px', background: 'rgba(228, 31, 38, 0.1)', border: '1px solid #E41F26', borderRadius: 'var(--radius)'}}>
-                <h3 style={{color: '#E41F26', marginBottom: '8px', fontSize: '16px'}}>Generation Limit Reached (6/6)</h3>
+                <h3 style={{color: '#E41F26', marginBottom: '8px', fontSize: '16px'}}>Generation Limit Reached (3/3)</h3>
                 <p style={{fontSize: '14px', marginBottom: '16px', color: 'var(--text-secondary)'}}>
                   You have reached the free generation limit. Please enter your Fal AI API key to continue. 
                   <strong style={{display: 'block', marginTop: '8px', color: '#E41F26'}}>WARNING: Do not enter an API key from an account that is not funded/recharged, or generation will fail.</strong>
