@@ -1,0 +1,23 @@
+{
+  "name": "ai-ad-creator",
+  "version": "1.0.0",
+  "description": "AI-powered ad creator — backend + Vite React frontend",
+  "main": "server.js",
+  "scripts": {
+    "dev": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "cd client && npm run preview",
+    "client": "cd client && npm run dev"
+  },
+  "engines": { "node": ">=18.0.0" },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.1"
+  },
+  "license": "MIT"
+}

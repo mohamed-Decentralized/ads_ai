@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdStudio AI — Turn Any URL Into a Professional Video Ad</title>
+  <meta name="description" content="Paste your business URL and get AI-generated advertisement images and videos in seconds. Free, customizable, and ready to use.">
+  <meta name="keywords" content="AI ad creator, video ads, advertising, AI marketing, automated ads">
+  <meta property="og:title" content="AdStudio AI — AI-Powered Ad Creator">
+  <meta property="og:description" content="Turn any website URL into a professional video advertisement with AI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/landing.css">
+</head>
+<body>
+
+  <!-- ── Navigation ────────────────────────────────────────────────────── -->
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" id="site-logo">
+        <span class="logo-icon">✦</span>
+        AdStudio <span class="logo-badge">AI</span>
+      </a>
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <a href="#features" id="nav-features">Features</a>
+        <a href="#how-it-works" id="nav-how">How it works</a>
+      </nav>
+      <button class="btn-ghost" id="nav-signin">Sign in →</button>
+    </div>
+  </header>
+
+  <!-- ── Hero ──────────────────────────────────────────────────────────── -->
+  <main>
+    <section class="hero" aria-labelledby="hero-headline">
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <div class="hero-badge" aria-label="Product badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          AI-Powered Ad Creation
+        </div>
+
+        <h1 class="hero-title" id="hero-headline">
+          No Creative?<br>
+          <span class="gradient-text">No Problem.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Paste your business URL and we'll turn it into a professional<br>
+          video ad — AI-generated visuals, script, and music, ready instantly.
+        </p>
+
+        <!-- URL Input Form -->
+        <div class="url-input-container" role="search">
+          <div class="url-input-wrapper" id="url-input-wrapper">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+              </svg>
+            </span>
+            <input
+              type="url"
+              id="url-input"
+              placeholder="Enter your website URL (e.g. yourcompany.com)"
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="Business website URL"
+            >
+            <button class="generate-btn" id="generate-btn" aria-label="Generate Ad from URL">
+              Generate Ad
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14m-7-7 7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+          <div class="input-hint">
+            Try: <span id="hint-example">apple.com · tesla.com · nike.com · starbucks.com</span>
+          </div>
+        </div>
+
+        <!-- Feature badges -->
+        <div class="feature-badges" role="list">
+          <div class="badge" role="listitem">
+            <svg class="badge-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Ready in under 60 seconds
+          </div>
+          <div class="badge" role="listitem">
+            <svg class="badge-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            AI-generated visuals
+          </div>
+          <div class="badge" role="listitem">
+            <svg class="badge-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            Fully customizable
+          </div>
+        </div>
+      </div>
+
+      <!-- Studio Preview Mockup -->
+      <div class="studio-preview-wrapper" aria-hidden="true">
+        <div class="studio-preview">
+          <div class="preview-header">
+            <div class="preview-dots"><span></span><span></span><span></span></div>
+            <span class="preview-title">✦ AdStudio AI Editor</span>
+          </div>
+          <div class="preview-content">
+            <div class="preview-mockup">
+              <div class="mockup-sidebar">
+                <div class="mockup-tab active"></div>
+                <div class="mockup-tab"></div>
+                <div class="mockup-tab"></div>
+                <div class="mockup-tab"></div>
+                <div class="mockup-tab"></div>
+              </div>
+              <div class="mockup-canvas">
+                <div class="mockup-image-placeholder">
+                  <div class="mockup-shimmer"></div>
+                </div>
+                <div class="mockup-timeline">
+                  <div class="mockup-track"></div>
+                  <div class="mockup-track short"></div>
+                  <div class="mockup-track medium"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── How It Works ─────────────────────────────────────────────────── -->
+    <section class="how-it-works" id="how-it-works" aria-labelledby="hiw-title">
+      <div class="section-inner">
+        <h2 class="section-title" id="hiw-title">How it works</h2>
+        <p class="section-subtitle">Three steps to your perfect ad</p>
+        <div class="steps" role="list">
+          <div class="step" role="listitem">
+            <div class="step-number">01</div>
+            <div class="step-icon" aria-hidden="true">🔗</div>
+            <h3>Paste your URL</h3>
+            <p>Enter your website URL. Our AI analyzes your brand, products, colors, and messaging automatically.</p>
+          </div>
+          <div class="step-arrow" aria-hidden="true">→</div>
+          <div class="step" role="listitem">
+            <div class="step-number">02</div>
+            <div class="step-icon" aria-hidden="true">✨</div>
+            <h3>AI creates your ad</h3>
+            <p>Generates 6 stunning ad images with FLUX AI and a professional voiceover script tailored to your brand.</p>
+          </div>
+          <div class="step-arrow" aria-hidden="true">→</div>
+          <div class="step" role="listitem">
+            <div class="step-number">03</div>
+            <div class="step-icon" aria-hidden="true">🎬</div>
+            <h3>Edit & download</h3>
+            <p>Customize everything in the studio — swap images, edit script, adjust banner, add music, then download.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Features ─────────────────────────────────────────────────────── -->
+    <section class="features" id="features" aria-labelledby="features-title">
+      <div class="section-inner">
+        <h2 class="section-title" id="features-title">Everything you need</h2>
+        <p class="section-subtitle">Professional ad creation, powered by cutting-edge AI</p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🤖</div>
+            <h3>AI Brand Analysis</h3>
+            <p>Automatically extracts your brand identity — colors, tone, products, audience — from your website content.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🖼️</div>
+            <h3>FLUX AI Image Generation</h3>
+            <p>6 unique, high-quality ad images generated by FLUX Schnell AI based on your specific brand identity.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📝</div>
+            <h3>Smart Ad Copywriting</h3>
+            <p>GPT-4o mini writes a compelling 30-second voiceover script that perfectly captures your brand voice.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🎨</div>
+            <h3>Full Studio Editor</h3>
+            <p>Edit images, bottom banner, end screen, music, voice, and script — all in a beautiful real-time editor.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🎵</div>
+            <h3>Background Music</h3>
+            <p>Choose from curated royalty-free music tracks matched to your brand's energy and tone.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">☁️</div>
+            <h3>Oracle Cloud Ready</h3>
+            <p>Built for production deployment on Oracle Cloud Infrastructure (OCI) with enterprise scalability.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Loading Overlay ───────────────────────────────────────────────── -->
+  <div class="loading-overlay" id="loading-overlay" role="dialog" aria-modal="true" aria-label="Generating your ad">
+    <div class="loading-card">
+      <div class="loading-logo">AdStudio AI</div>
+      <h2 class="loading-title" id="loading-title">Analyzing your website...</h2>
+      <div class="loading-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="loading-bar" id="loading-bar"></div>
+      </div>
+      <div class="loading-steps">
+        <div class="loading-step" id="step-1">
+          <span class="step-dot pending" aria-hidden="true"></span>
+          <span>Fetching website content</span>
+        </div>
+        <div class="loading-step" id="step-2">
+          <span class="step-dot pending" aria-hidden="true"></span>
+          <span>Extracting brand identity</span>
+        </div>
+        <div class="loading-step" id="step-3">
+          <span class="step-dot pending" aria-hidden="true"></span>
+          <span>Writing ad script &amp; concepts</span>
+        </div>
+        <div class="loading-step" id="step-4">
+          <span class="step-dot pending" aria-hidden="true"></span>
+          <span>Generating 6 AI visuals with FLUX</span>
+        </div>
+        <div class="loading-step" id="step-5">
+          <span class="step-dot pending" aria-hidden="true"></span>
+          <span>Opening your studio</span>
+        </div>
+      </div>
+      <p class="loading-url" id="loading-url"></p>
+    </div>
+  </div>
+
+  <!-- ── Error Toast ────────────────────────────────────────────────────── -->
+  <div class="error-toast" id="error-toast" role="alert" aria-live="polite"></div>
+
+  <script src="/js/landing.js"></script>
+</body>
+</html>

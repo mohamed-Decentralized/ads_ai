@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdStudio AI — Studio Editor</title>
+  <meta name="description" content="Edit your AI-generated advertisement in the AdStudio editor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/studio.css">
+</head>
+<body class="studio-body">
+
+<div class="studio-layout">
+
+  <!-- ── Header ─────────────────────────────────────────────────────── -->
+  <header class="studio-header" role="banner">
+    <div class="studio-logo">
+      <span class="logo-icon">✦</span>
+      AdStudio
+    </div>
+    <div class="studio-header-center">
+      <span class="studio-company-name" id="studio-company-name">Loading your ad...</span>
+    </div>
+    <div class="studio-header-right">
+      <button class="btn-outline" id="preview-btn" aria-label="Preview slideshow">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Preview
+      </button>
+      <a href="/" class="btn-close" id="close-studio-btn" aria-label="Close studio">✕</a>
+    </div>
+  </header>
+
+  <!-- ── Main ───────────────────────────────────────────────────────── -->
+  <div class="studio-main">
+
+    <!-- Left Sidebar Icons -->
+    <nav class="sidebar-icons" role="navigation" aria-label="Studio panels">
+      <button class="tab-icon active" data-tab="slideshow" id="tab-btn-slideshow" title="Slideshow" aria-selected="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <span>Slides</span>
+      </button>
+      <button class="tab-icon" data-tab="banner" id="tab-btn-banner" title="Bottom Banner" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><rect x="2" y="15" width="20" height="6" rx="1"/><path d="M2 4h20M2 9h14"/></svg>
+        <span>Banner</span>
+      </button>
+      <button class="tab-icon" data-tab="endscreen" id="tab-btn-endscreen" title="End Screen" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+        <span>End</span>
+      </button>
+      <button class="tab-icon" data-tab="music" id="tab-btn-music" title="Music" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <span>Music</span>
+      </button>
+      <button class="tab-icon" data-tab="voice" id="tab-btn-voice" title="Voice &amp; Script" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        <span>Voice</span>
+      </button>
+      <button class="tab-icon" data-tab="settings" id="tab-btn-settings" title="AI Settings" aria-selected="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        <span>AI</span>
+      </button>
+    </nav>
+
+    <!-- Left Sidebar Panel -->
+    <div class="sidebar-panel" role="main">
+
+      <!-- ── SLIDESHOW TAB ──────────────────────────────────────────── -->
+      <div class="tab-content active" id="tab-slideshow">
+        <h3 class="panel-title">Slideshow</h3>
+        <p class="panel-subtitle">Click to preview · Click Change to swap image</p>
+        <div class="slideshow-list" id="slideshow-list" role="list" aria-label="Ad slides">
+          <div class="slide-loading" style="padding:32px;text-align:center;color:var(--text-muted)">
+            <div class="spinner" style="margin:0 auto 12px"></div>
+            <p style="font-size:13px">Generating your images...</p>
+          </div>
+        </div>
+        <div class="panel-section">
+          <button class="btn-secondary" id="add-image-btn" style="width:100%;justify-content:center">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg>
+            Generate a New Image
+          </button>
+        </div>
+      </div>
+
+      <!-- ── BOTTOM BANNER TAB ──────────────────────────────────────── -->
+      <div class="tab-content" id="tab-banner">
+        <h3 class="panel-title">Bottom Banner</h3>
+        <p class="panel-subtitle">Business info shown in the ad overlay</p>
+
+        <div class="form-group">
+          <label for="banner-company">Company Name</label>
+          <input type="text" id="banner-company" class="form-input" placeholder="Your Company" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="banner-tagline">Tagline</label>
+          <input type="text" id="banner-tagline" class="form-input" placeholder="Your tagline here" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="banner-website">Website</label>
+          <input type="text" id="banner-website" class="form-input" placeholder="www.yourcompany.com" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="banner-phone">Phone</label>
+          <input type="text" id="banner-phone" class="form-input" placeholder="+1 (555) 000-0000" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="banner-address">Address</label>
+          <input type="text" id="banner-address" class="form-input" placeholder="123 Main St, City" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="banner-color">Banner Color</label>
+          <div class="color-picker-row">
+            <input type="color" id="banner-color" value="#0a0a14" class="color-input">
+            <span class="color-label" id="banner-color-label">#0a0a14</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="toggle-label" for="banner-visible-toggle">
+            <span>Show Banner</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="banner-visible-toggle" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </label>
+        </div>
+      </div>
+
+      <!-- ── END SCREEN TAB ─────────────────────────────────────────── -->
+      <div class="tab-content" id="tab-endscreen">
+        <h3 class="panel-title">End Screen</h3>
+        <p class="panel-subtitle">The final call-to-action screen</p>
+
+        <div class="form-group">
+          <label for="end-headline">Headline</label>
+          <input type="text" id="end-headline" class="form-input" placeholder="Ready to get started?" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="end-cta">CTA Button Text</label>
+          <input type="text" id="end-cta" class="form-input" placeholder="Visit Us Today" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="end-url">URL</label>
+          <input type="text" id="end-url" class="form-input" placeholder="www.yourcompany.com" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="end-style">Background Style</label>
+          <select class="form-select" id="end-style">
+            <option value="gradient">Purple Gradient</option>
+            <option value="dark">Dark Minimal</option>
+            <option value="brand">Brand Color</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ── MUSIC TAB ──────────────────────────────────────────────── -->
+      <div class="tab-content" id="tab-music">
+        <h3 class="panel-title">Music</h3>
+        <p class="panel-subtitle">Add background music to your ad</p>
+
+        <div class="form-group">
+          <label class="toggle-label" for="music-enabled-toggle">
+            <span>Enable Music</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="music-enabled-toggle" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </label>
+        </div>
+
+        <div class="music-tracks" id="music-tracks" role="radiogroup" aria-label="Music tracks">
+          <div class="music-track selected" data-track="upbeat" role="radio" aria-checked="true" tabindex="0">
+            <div class="track-icon" aria-hidden="true">⚡</div>
+            <div class="track-info">
+              <div class="track-name">Upbeat &amp; Energetic</div>
+              <div class="track-meta">120 BPM · Pop</div>
+            </div>
+            <div class="track-play" aria-label="Preview track">▶</div>
+          </div>
+          <div class="music-track" data-track="corporate" role="radio" aria-checked="false" tabindex="0">
+            <div class="track-icon" aria-hidden="true">🎼</div>
+            <div class="track-info">
+              <div class="track-name">Corporate Professional</div>
+              <div class="track-meta">90 BPM · Ambient</div>
+            </div>
+            <div class="track-play" aria-label="Preview track">▶</div>
+          </div>
+          <div class="music-track" data-track="cinematic" role="radio" aria-checked="false" tabindex="0">
+            <div class="track-icon" aria-hidden="true">🎬</div>
+            <div class="track-info">
+              <div class="track-name">Cinematic Epic</div>
+              <div class="track-meta">110 BPM · Orchestral</div>
+            </div>
+            <div class="track-play" aria-label="Preview track">▶</div>
+          </div>
+          <div class="music-track" data-track="modern" role="radio" aria-checked="false" tabindex="0">
+            <div class="track-icon" aria-hidden="true">🎧</div>
+            <div class="track-info">
+              <div class="track-name">Modern Electronic</div>
+              <div class="track-meta">128 BPM · Electronic</div>
+            </div>
+            <div class="track-play" aria-label="Preview track">▶</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="music-volume">Volume</label>
+          <input type="range" id="music-volume" min="0" max="100" value="50" class="range-input" aria-label="Music volume">
+        </div>
+      </div>
+
+      <!-- ── VOICE & SCRIPT TAB ─────────────────────────────────────── -->
+      <div class="tab-content" id="tab-voice">
+        <h3 class="panel-title">Voice &amp; Script</h3>
+        <p class="panel-subtitle">AI-generated copy — edit freely</p>
+
+        <div class="form-group">
+          <label class="toggle-label" for="voice-enabled-toggle">
+            <span>Enable Voiceover</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="voice-enabled-toggle" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="voice-script">Ad Script</label>
+          <textarea id="voice-script" class="form-textarea" rows="9" placeholder="Your AI-generated ad script will appear here..."></textarea>
+          <div class="word-count" id="word-count">0 words · ~0s</div>
+        </div>
+
+        <div class="form-group">
+          <label for="voice-type">Voice Style</label>
+          <select class="form-select" id="voice-type">
+            <option value="male-professional">Male · Professional · American</option>
+            <option value="female-professional">Female · Professional · American</option>
+            <option value="male-young">Male · Young · Energetic</option>
+            <option value="female-warm">Female · Warm · Friendly</option>
+            <option value="male-deep">Male · Deep · Authoritative</option>
+          </select>
+        </div>
+
+        <button class="btn-secondary" id="regenerate-script-btn" style="width:100%;justify-content:center">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+          Regenerate Script
+        </button>
+      </div>
+
+      <!-- ── AI SETTINGS TAB ────────────────────────────────────────── -->
+      <div class="tab-content" id="tab-settings">
+        <h3 class="panel-title">AI Settings</h3>
+        <p class="panel-subtitle">Refine your ad generation parameters</p>
+
+        <div class="form-group">
+          <label for="ai-tone">Ad Tone</label>
+          <select class="form-select" id="ai-tone">
+            <option value="professional">Professional &amp; Corporate</option>
+            <option value="fun">Fun &amp; Energetic</option>
+            <option value="luxury">Luxury &amp; Premium</option>
+            <option value="friendly">Friendly &amp; Approachable</option>
+            <option value="bold">Bold &amp; Impactful</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ai-platform">Target Platform</label>
+          <select class="form-select" id="ai-platform">
+            <option value="tv">TV Commercial</option>
+            <option value="social">Social Media</option>
+            <option value="digital">Digital Signage</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ai-notes">Additional Notes</label>
+          <textarea id="ai-notes" class="form-textarea" rows="4" placeholder="E.g. Focus on our summer sale, target 25-35 year olds, include the $50 discount offer..."></textarea>
+        </div>
+
+        <button class="btn-primary regenerate-btn" id="regenerate-all-btn" style="width:100%;justify-content:center">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+          Regenerate All Images
+        </button>
+      </div>
+
+    </div><!-- /sidebar-panel -->
+
+    <!-- ── Preview + Timeline + Save ───────────────────────────────── -->
+    <div class="preview-section">
+
+      <!-- Ad Preview -->
+      <div class="ad-preview-container">
+        <div class="ad-preview" id="ad-preview" role="img" aria-label="Ad preview">
+
+          <!-- Slides -->
+          <div class="slide-container" id="slide-container">
+            <div class="slide-loading">
+              <div class="spinner"></div>
+              <p>Generating your ad...</p>
+            </div>
+          </div>
+
+          <!-- Bottom Banner Overlay -->
+          <div class="banner-overlay" id="banner-overlay">
+            <div class="banner-logo-area" id="banner-logo-area">
+              <div class="banner-logo-placeholder" id="banner-logo-placeholder">✦</div>
+            </div>
+            <div class="banner-info">
+              <div class="banner-company-name" id="preview-company-name">Company Name</div>
+              <div class="banner-tagline" id="preview-tagline">Your tagline</div>
+              <div class="banner-details">
+                <span id="preview-phone"></span>
+                <span id="preview-website"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Play overlay -->
+          <div class="preview-controls" id="preview-controls" aria-hidden="true">
+            <button class="preview-play-btn" id="preview-play-btn" aria-label="Play slideshow">
+              <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+
+          <!-- Slide counter -->
+          <div class="slide-counter" id="slide-counter" aria-live="polite">1 / 6</div>
+        </div>
+
+        <!-- Slide navigation -->
+        <div class="preview-actions">
+          <button class="prev-slide-btn" id="prev-slide" aria-label="Previous slide">‹</button>
+          <div class="slide-dots" id="slide-dots" role="tablist" aria-label="Slide navigation"></div>
+          <button class="next-slide-btn" id="next-slide" aria-label="Next slide">›</button>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline-section" role="region" aria-label="Timeline">
+        <div class="timeline-header">
+          <button class="timeline-play-btn" id="timeline-play" aria-label="Play/pause timeline">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+          <span class="timeline-time" id="timeline-time">00:00</span>
+        </div>
+        <div class="timeline-tracks">
+          <div class="track-row">
+            <div class="track-label">IMAGES</div>
+            <div class="track-content" id="image-track"></div>
+          </div>
+          <div class="track-row">
+            <div class="track-label">BANNER</div>
+            <div class="track-content">
+              <div class="track-block banner-block" style="width:100%">Bottom Banner</div>
+            </div>
+          </div>
+          <div class="track-row">
+            <div class="track-label">MUSIC</div>
+            <div class="track-content">
+              <div class="track-block music-block" style="width:100%">Background Music</div>
+            </div>
+          </div>
+          <div class="track-row">
+            <div class="track-label">VOICE</div>
+            <div class="track-content">
+              <div class="track-block voice-block" style="width:100%">Voiceover Script</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Save Button -->
+      <div class="save-section">
+        <button class="save-btn" id="save-btn">
+          Save and continue
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+        </button>
+      </div>
+
+    </div><!-- /preview-section -->
+
+  </div><!-- /studio-main -->
+</div><!-- /studio-layout -->
+
+<!-- ── Image Change Modal ─────────────────────────────────────────────── -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Choose replacement image">
+  <div class="modal" id="image-modal">
+    <div class="modal-header">
+      <h3>Choose an image</h3>
+      <button class="modal-close" id="modal-close" aria-label="Close modal">✕</button>
+    </div>
+    <div class="modal-content">
+      <div class="modal-images" id="modal-images" role="listbox" aria-label="Available images"></div>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="generate-new-variation-btn">
+          ✨ Generate New AI Variation
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Export Modal ───────────────────────────────────────────────────── -->
+<div class="modal-overlay" id="export-modal-overlay" role="dialog" aria-modal="true" aria-label="Download your ad">
+  <div class="modal export-modal" id="export-modal">
+    <div class="modal-header">
+      <div class="export-success-icon" aria-hidden="true">✓</div>
+      <h3>Your Ad is Ready!</h3>
+      <p>Download your ad assets below</p>
+    </div>
+    <div class="export-options">
+      <button class="export-btn" id="download-images-btn">
+        <div class="export-btn-icon" aria-hidden="true">🖼️</div>
+        <div class="export-btn-text">
+          <strong>Download All Images</strong>
+          <span>All 6 AI-generated ad images</span>
+        </div>
+      </button>
+      <button class="export-btn" id="download-script-btn">
+        <div class="export-btn-icon" aria-hidden="true">📝</div>
+        <div class="export-btn-text">
+          <strong>Download Script</strong>
+          <span>Voiceover script as text file</span>
+        </div>
+      </button>
+      <button class="export-btn" id="download-brand-btn">
+        <div class="export-btn-icon" aria-hidden="true">📦</div>
+        <div class="export-btn-text">
+          <strong>Download Brand Brief</strong>
+          <span>Full brand analysis JSON</span>
+        </div>
+      </button>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" id="export-close-btn">Close</button>
+      <button class="btn-primary" id="make-another-btn">Create Another Ad →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Regenerating Overlay ───────────────────────────────────────────── -->
+<div class="regen-overlay" id="regen-overlay" style="display:none" role="status" aria-live="polite" aria-label="Regenerating">
+  <div class="regen-card">
+    <div class="spinner large"></div>
+    <p id="regen-message">Generating new image with FLUX AI...</p>
+  </div>
+</div>
+
+<script src="/js/studio.js"></script>
+</body>
+</html>
