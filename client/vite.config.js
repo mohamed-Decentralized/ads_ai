@@ -13,8 +13,4 @@ export default defineConfig({
       }
     }
   },
-  build: {
-    outDir: '../public_react',
-    emptyOutDir: true,
-  }
 })
